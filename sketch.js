@@ -1,52 +1,6 @@
 
-function setup() {
-  createCanvas(500, 500);
-  background(6, 110, 153);
-
-  
-  // Creating a circle with radial lines
-  let radialCircle1 = new RadialLinesCircle(215, 30,135/2, 35, '#bfe0f0', 35); // Radius of 35 vacated in the centre
-  let radialCircle2 = new RadialLinesCircle(140, 330,135/2, 35, '#bfe0f0', 35);
-  radialCircle1.draw();
-  radialCircle2.draw();
-
-
-  // circles
-  let circle1 = new ConcentricCircles(65, 70, 135, 80, 5, '#272b5f', '#bfe0f0');
-  let circle2 = new ConcentricCircles(175, 180, 135, 80, 5, '#159439', '#e3f2ef');
-  let circle3 = new ConcentricCircles(290, 290, 135, 80, 5, '#dd3d4f', '#fff6fa');
-  let circle4 = new ConcentricCircles(400, 400, 135, 80, 5, '#15438a', '#F4C54C');
-  let circle5 = new ConcentricCircles(510, 510, 135, 80, 5, '#774E41', 'orange');
-  
-  let circle6 = new ConcentricCircles(330, 140, 135, 80, 5, '#c093c3', '#fab632');
-  let circle7 = new ConcentricCircles(440, 250, 135, 80, 5, '#f07e35', '#f2f8f6');
-  
-  let circle8 = new ConcentricCircles(370, -10, 135, 80, 5, '#e4271e', '#fceae6');
-  let circle9 = new ConcentricCircles(480, 100, 135, 80, 5, '#22315b', '#f6af4f');
-  
-  let circle10 = new ConcentricCircles(20, 220, 135, 80, 5, '#004985', '#f5b423');
-  let circle11 = new ConcentricCircles(250, 440, 135, 80, 5, '#cd1a52', '#f8b66a');
-  
-  let circle12 = new ConcentricCircles(-10, 370, 135, 80, 5, '#009d90', '#daeef3');
-  let circle13 = new ConcentricCircles(100, 480, 135, 80, 5, '#e52929', '#fdfdfd');
-
-  // Draw the circle
-  circle1.draw();
-  circle2.draw();
-  circle3.draw();
-  circle4.draw();
-  circle5.draw();
-  circle6.draw();
-  circle7.draw();
-  circle8.draw();
-  circle9.draw();
-  circle10.draw();
-  circle11.draw();
-  circle12.draw();
-  circle13.draw();
-
-  // Punti per il secondo codice
-  const points = [
+let circles = []; 
+const points = [
     [4, 136], [95, 157], [137, 96], [136, 4], [97, 243], [242, 118],
     [264, 202], [305, 55], [356, 224], [201, 264], [53, 305], [75, 396],
     [0, 296], [162, 419], [183, 500], [224, 356], [316, 377], [336, 463],
@@ -55,21 +9,335 @@ function setup() {
     [0, 28], [25, -10], [6, 458], [40, 540], [300, 500]
   ];
 
-  // Connetti punti con distanza <= 108
+function setup() {
+  createCanvas(500, 500);
+  
+
+  // cirles
+  //1
+  circles.push(new DotCircle(65, 70, 140, 75, 5, '#272b5f', '#bfe0f0'));
+  circles.push(new LineCircle(65, 70, 40, 4, 3, '#984e90', '#006c31'));
+  circles.push(new SmallCircle(65, 70, 3, '#040506', '#05844d', '#b1a4b4'));
+       
+  
+  //2
+  circles.push(new DotCircle(175, 180, 140, 75, 5, '#159439', '#e3f2ef'));
+  circles.push(new LineCircle(175, 180, 40, 4, 3, '#eb5559', '#c74d97'));
+  circles.push(new SmallCircle(175, 180, 3, '#040506', '#05844d', '#b1a4b4'));
+  
+  //3
+  circles.push(new DotCircle(290, 290, 140, 75, 5, '#dd3d4f', '#fff6fa'));
+  circles.push(new ZigzagCircle(290, 290, 40, 20, 30, '#d260a0', '#eb5a4b'));
+  circles.push(new SmallCircle(290, 290, 3, '#040506', '#05844d', '#b1a4b4'));
+  
+  //4
+  circles.push(new DotCircle(400, 400, 135, 75, 5, '#15438a', '#F4C54C'));
+  circles.push(new LineCircle(400, 400, 40, 4, 3, '#eb584e', '#e97fb1'));
+  circles.push(new SmallCircle(400, 400, 3, '#040506', '#e5282c', '#b1a4b4'));
+  
+  
+  //5
+  circles.push(new DotCircle(510, 510, 135, 75, 5, '#6eba78', '#ecf6f8'));
+  circles.push(new LineCircle(510, 510, 40, 4, 3, '#bcc25d', '#c980b5'));
+      
+  
+  //6
+  circles.push(new ZigzagCircle(215, 30, 135/2, 35, 30, '#f8ca2a', '#e4271a'));
+  circles.push(new DotCircle(215, 30, 80, 40, 3, '#eb5a30', '#c4549b'));
+  circles.push(new SmallCircle(215, 30, 3, '#040506', '#05844d', '#b1a4b4'));
+  
+  //7
+  circles.push(new DotCircle(330, 140, 140, 75, 5, '#c093c3', '#fab632'));
+  circles.push(new LineCircle(330, 140, 40, 4, 3, '#53bad7', '#ba60a1'));
+  circles.push(new SmallCircle(330, 140, 3, '#26869c', '#e21e19', '#AB9FAE'));
+  
+  //8
+  circles.push(new DotCircle(440, 250, 140, 75, 5, '#f07e35', '#f2f8f6'));
+  circles.push(new LineCircle(440, 250, 40, 4, 3, '#bc569c', '#117253'));
+  circles.push(new SmallCircle(440, 250, 3, '#040506', '#05844d', '#b1a4b4'));
+  
+  //9
+  circles.push(new ZigzagCircle(550, 360, 135/2, 35, 30, '#f8ca2a', '#e4271a'));
+  
+  //10
+  circles.push(new DotCircle(370, -10, 140, 75, 5, '#e4271e', '#fceae6'));
+  circles.push(new LineCircle(370, -10, 40, 4, 3, '#e2a988', '##ba60a1'));
+  circles.push(new SmallCircle(370, -10, 3, '#040506', '#05844d', '#b1a4b4'));
+  
+  //11
+  circles.push(new DotCircle(480, 100, 140, 75, 5, '#22315b', '#f6af4f'));
+  circles.push(new DotCircle(480, 100, 80, 40, 3, '#f4e1f0', '#bd4591'));
+  circles.push(new SmallCircle(480, 100, 3, '#040506', '#e6332a', '#b1a4b4'));
+     
+  //12
+  circles.push(new DotCircle(20, 220, 140, 75, 5, '#004985', '#f5b423'));
+  circles.push(new DotCircle(20, 220, 80, 40, 3, '#e83e35', '#c44b96'));
+  circles.push(new SmallCircle(20, 220, 3, '#040506', '#e5282c', '#b1a4b4'));
+  
+  //13
+  circles.push(new ZigzagCircle(140, 330,135/2, 35, 30, '#f8ca2a', '#e4271a'));
+  circles.push(new DotCircle(140, 330, 80, 40, 3, '#e52a2f', '#c85d9f'));
+  circles.push(new SmallCircle(140, 330, 3, '#040506', '#e5282c', '#b1a4b4'));
+  
+  //14
+  circles.push(new DotCircle(250, 440, 140, 75, 5, '#cd1a52', '#f8b66a'));
+  circles.push(new LineCircle(250, 440, 40, 4, 3,  '#bcc25d', '#c980b5'));
+  circles.push(new SmallCircle(250, 440, 3, '#040506', '#e5282c', '#b1a4b4'));
+  
+  //15
+  circles.push(new DotCircle(365, 550, 140, 75, 5, '#e72b2c', '#fdf6f7'));
+  
+  //16
+  circles.push(new DotCircle(-10, 370, 140, 75, 5, '#009d90', '#daeef3'));
+  circles.push(new LineCircle(-10, 370, 40, 4, 3,  '#6e9381', '#af4d97'));
+  circles.push(new SmallCircle(-10, 370, 3, '#040506', '#05844d', '#b1a4b4'));
+      
+  //17
+  circles.push(new DotCircle(100, 480, 140, 75, 5, '#e52929', '#fdfdfd'));
+  circles.push(new LineCircle(100, 480, 40, 4, 3,  '#b275b0', '#69c0e3'));
+  circles.push(new SmallCircle(100, 480, 3, '#040506', '#05844d', '#b1a4b4'));
+  
+  // Define the start and end colors of the gradient
+  let topColor = color('#004e76');  // Blue 
+  let bottomColor = color('#0d7faa');  // Light blue shade
+  
+   // Draw the gradient background
+  for (let y = 0; y <= height; y++) {
+    // Interpolate between the top and bottom color
+    let inter = map(y, 0, height, 0, 1);
+    let c = lerpColor(topColor, bottomColor, inter);
+    
+    // Draw a horizontal line with the interpolated color
+    stroke(c);
+    line(0, y, width, y);
+  }
+  
+  
+ // Loop through the array and call display() on each circle object
+  for (let i = 0; i < circles.length; i++) {
+    circles[i].display();
+  }
+  
+//structure
+
+  // connect point
   connectPoints(points, 108);
   
-  // Genera ellissi casuali nei punti
+  // random ellipses
   generateRandomEllipses(points);
+
 }
 
-// Funzioni ausiliarie
 
+class DotCircle {
+  constructor(x, y, outerDiameter, innerDiameter, numCircles, dotColor, fillColor) {
+    this.x = x; // X-coordinate for the center of the circle
+    this.y = y; // Y-coordinate for the center of the circle
+    this.outerDiameter = outerDiameter; // Diameter of the outermost circle
+    this.innerDiameter = innerDiameter; // Diameter of the innermost circle
+    this.numCircles = numCircles; // Number of concentric circles
+    this.dotColor = dotColor; // Color for the dots on each circle
+    this.fillColor = fillColor; // Fill color for the main circle
+
+    // Calculate the step size to scale down each circle diameter
+    this.diameterStep = (outerDiameter - innerDiameter) / (numCircles - 1);
+    
+  }
+
+  display() {
+    // Draw the filled main circle in the background
+    noStroke(); // No border for the filled circle
+    fill(this.fillColor); // Set fill color for the main circle
+    circle(this.x, this.y, this.outerDiameter); // Draw the main circle with full diameter
+
+    // Draw each concentric circle with dashed style
+    for (let i = 0; i < this.numCircles; i++) {
+      // Calculate the current diameter based on the step size
+      let currentDiameter = (this.outerDiameter - 4) - i * this.diameterStep;
+      // Call the function to draw a dashed circle at this diameter
+      this.drawDashedCircle(this.x, this.y, currentDiameter, 6, this.dotColor, 2); 
+    }
+  }
+
+  drawDashedCircle(x, y, diameter, dotSize, lineColor, spacing) {
+   // Set the color of the dots for the dashed line
+    stroke(lineColor);
+    noFill(); // Only dots, no fill color for the circle area
+
+    // Calculate radius and circumference for the current circle
+    let radius = diameter / 2;
+    let circumference = TWO_PI * radius;
+
+    // Determine the number of dots to fit around the circle with spacing
+    let numDots = floor(circumference / (dotSize + spacing));
+
+    // Draw each dot in the dashed circle
+    for (let i = 0; i < numDots; i++) {
+      // Calculate the angle for each dot's position around the circle
+      let angle = map(i, 0, numDots, 0, TWO_PI);
+      // Calculate the X and Y position of each dot based on the angle
+      let xDot = x + radius * cos(angle);
+      let yDot = y + radius * sin(angle);
+
+      fill(lineColor); // Set fill color for the dot
+      noStroke(); // No outline for individual dots
+      circle(xDot, yDot, dotSize); // Draw the dot at calculated position
+    }
+  }
+}
+
+// Class for circles with multiple line
+class LineCircle {
+  constructor(x, y, baseRadius, numConcentricCircles, strokeSize, backColor, stokeColor) {
+    this.x = x; // X-coordinate for the center of the circles
+    this.y = y; // Y-coordinate for the center of the circles
+    this.baseRadius = baseRadius; // Radius for the largest circle
+    this.numConcentricCircles = numConcentricCircles; // Total number of concentric circles
+    this.strokeSize = strokeSize; // Thickness of the stroke for each concentric circle
+    this.backColor = backColor; // Background color for the base circle
+    this.stokeColor = stokeColor; // Stroke color for the concentric circles
+
+    // Array to store the calculated radii for each concentric circle
+    this.concentricRadii = [];
+
+    // Calculate the radius decrement for each concentric circle
+    let radiusStep = (baseRadius - 20) / numConcentricCircles;
+    // Generate radii for concentric circles by reducing baseRadius progressively
+    for (let i = 0; i < numConcentricCircles; i++) {
+      // Each concentric radius is reduced by radiusStep
+      this.concentricRadii.push(baseRadius - i * radiusStep);
+    }
+    
+    
+  }
+
+  display() {
+    // Draw the base filled circle
+    fill(this.backColor); // Set fill color to backColor
+    noStroke(); // Remove stroke for the filled circle
+    circle(this.x, this.y, this.baseRadius * 2); // Draw the base circle with double the base radius
+
+    // Set stroke properties for concentric circles
+    stroke(this.stokeColor); // Set stroke color for concentric circles
+    strokeWeight(this.strokeSize); // Set uniform stroke thickness for all circles
+    noFill(); // Remove fill to only draw the outlines
+
+    // Draw each concentric circle
+    for (let i = 0; i < this.numConcentricCircles; i++) {
+      let currentRadius = this.concentricRadii[i]; // Get the radius for the current circle
+      circle(this.x, this.y, currentRadius * 2); // Draw the circle with double the radius
+    }
+  }
+}
+
+// Class for circles with zigzag line
+class ZigzagCircle {
+  constructor(x, y, outerRadius, innerRadius, numLines, fillColor, strokeColor) {
+    this.x = x; // X-coordinate for the center of the circle
+    this.y = y; // Y-coordinate for the center of the circle
+    this.outerRadius = outerRadius; // Radius for the outer boundary of the circle
+    this.innerRadius = innerRadius; // Radius for the inner empty area
+    this.numLines = numLines; // Number of zigzag lines to be drawn
+    this.fillColor = fillColor; // Fill color for the outer circle
+    this.strokeColor = strokeColor; // Color for the zigzag lines
+    
+    
+  }
+
+  display() {
+    // Draw the filled outer circle
+    fill(this.fillColor); // Set fill color
+    noStroke(); // Disable stroke around the circle
+    ellipse(this.x, this.y, this.outerRadius * 2); // Draw circle with diameter equal to twice the outer radius
+
+    // Calculate the angle increment for each zigzag line
+    let angleStep = TWO_PI / this.numLines; // Divide full circle by the number of lines to get angle increment
+
+    // Arrays to store points on the outer and inner radius for zigzag connections
+    let outerPoints = []; // Store points on the outer radius
+    let innerPoints = []; // Store points on the inner radius
+
+    // Draw radial lines from the center to the outer circle
+    stroke(this.strokeColor); // Set stroke color for radial lines
+    strokeWeight(2); // Set thickness for radial lines
+    for (let i = 0; i < this.numLines; i++) {
+      // Calculate the angle for the current line
+      let angle1 = map(i, 0, this.numLines, 0, TWO_PI);
+
+      // Calculate endpoint coordinates on the outer radius for the radial line
+      let x1 = this.x + cos(angle1) * this.outerRadius;
+      let y1 = this.y + sin(angle1) * this.outerRadius;
+
+      // Draw radial line from the center to the outer radius
+      line(this.x, this.y, x1, y1);
+
+      // Calculate endpoint coordinates for the zigzag points
+      let angle2 = i * angleStep; // Alternate angle calculation for zigzag points
+      let xOuter = this.x + cos(angle2) * this.outerRadius; // Outer zigzag point
+      let yOuter = this.y + sin(angle2) * this.outerRadius;
+      let xInner = this.x + cos(angle2) * this.innerRadius; // Inner zigzag point
+      let yInner = this.y + sin(angle2) * this.innerRadius;
+
+      // Add calculated outer and inner points to their respective arrays
+      outerPoints.push({ x: xOuter, y: yOuter });
+      innerPoints.push({ x: xInner, y: yInner });
+    }
+    
+     
+    // Draw zigzag lines connecting outer and inner points
+    stroke(this.strokeColor); // Set color for zigzag lines
+    strokeWeight(2); // Set thickness for zigzag lines
+    for (let i = 0; i < this.numLines; i++) {
+      // Calculate index of the next point to connect for zigzag pattern
+      let nextIndex = (i + 1) % this.numLines;
+
+      // Connect current outer point to the next inner point for a zigzag pattern
+      line(outerPoints[i].x, outerPoints[i].y, innerPoints[nextIndex].x, innerPoints[nextIndex].y);
+    }
+
+  }
+}
+
+// Class for smal circles
+class SmallCircle {
+  constructor(x, y, strokeWeightValue, strokeColor, fillColor, smallCircleColor) {
+    this.x = x;  // X-coordinate of the circle's center
+    this.y = y;  // Y-coordinate of the circle's center
+    this.strokeWeightValue = strokeWeightValue;  // Thickness of the outer circle's stroke
+    this.strokeColor = strokeColor;  // Color for the outer circle's stroke
+    this.fillColor = fillColor;  // Fill color for the outer circle
+    this.smallCircleColor = smallCircleColor;  // Fill color for the inner small circle
+   
+  }
+
+  display() {
+    // Draw the outer circle with the specified stroke and fill colors
+    stroke(this.strokeColor); // Set the stroke color for the outer circle
+    strokeWeight(this.strokeWeightValue); // Set the stroke thickness for the outer circle
+    fill(this.fillColor); // Set the fill color for the outer circle
+    circle(this.x, this.y, 30);  // Draw the outer circle with a diameter of 30
+
+    // Draw the inner small circle with a specified color, without any stroke
+    noStroke(); // Disable stroke for the small inner circle
+    fill(this.smallCircleColor); // Set the fill color for the small inner circle
+    circle(this.x, this.y, 10);  // Draw the small inner circle with a diameter of 10
+  }
+}
+
+// function for structure
 function connectPoints(points, maxDistance) {
+  // Loop through each point in the array 'points' and treat it as the starting point
   points.forEach((start, i) => {
+    // For each starting point, loop through the points again to get the endpoint
     points.forEach((end, j) => {
+      // Only consider pairs where the index 'i' is less than 'j' to avoid duplicate connections
       if (i < j) {
+        // Calculate the distance between the two points using the 'calculateDistance' function
         const distance = calculateDistance(...start, ...end);
+        
+        // If the distance between the points is less than or equal to the specified 'maxDistance'
         if (distance <= maxDistance) {
+          // Call 'drawConnection' to visually connect the two points, using the distance as a parameter
           drawConnection(start, end, distance);
         }
       }
@@ -78,41 +346,75 @@ function connectPoints(points, maxDistance) {
 }
 
 function drawConnection(start, end, distance) {
+  // Calculate the angle between the start and end points using the 'calculateAngle' function
   const angle = calculateAngle(...start, ...end);
+  
+  // Calculate the X-axis radius for the ellipses based on the distance, adjusting it to fit
   let radiusX = (distance - 12) / 6;
+  
+  // Define a fixed Y-axis radius for the ellipses
   let radiusY = 3;
 
+  // Save the current drawing state
   push();
+  
+  // Translate the drawing origin to the starting point's coordinates
   translate(start[0], start[1]);
+  
+  // Rotate the drawing context based on the calculated angle (convert angle to radians)
   rotate(radians(angle));
+  
+  // Loop to create 3 ellipses along the line between the start and end points
   for (let i = 0; i < 3; i++) {
+    // Draw an ellipse at an offset along the line, using the calculated radii for X and Y
     createEllipse((12 + 6 + 2 * radiusX * i), 0, radiusX, radiusY);
   }
+  
+  // Restore the previous drawing state to avoid affecting other parts of the canvas
   pop();
 }
 
 function generateRandomEllipses(points) {
+  // Loop through each point in the array
   for (let i = 0; i < points.length; i++) {
+    // Extract the x and y coordinates of the current point
     let x = points[i][0];
     let y = points[i][1];
 
+    // Generate random width (w) and height (h) for the ellipse
     let w = random(15, 20);
     let h = random(15, 20);
+
+    // Generate a random angle for rotating the ellipse
     let angle = random(-PI / 9, PI / 9);
 
+    // Save the current drawing state before applying transformations
     push();
+    
+    // Move the drawing origin to the point (x, y)
     translate(x, y);
+
+    // Rotate the drawing context by the random angle
     rotate(angle);
 
-    stroke(232, 120, 15);
-    strokeWeight(3);
-    fill(0);
+    // Set stroke properties (color and thickness) for the outer ellipse
+    stroke(232, 120, 15);  // Orange color
+    strokeWeight(3);  // Line thickness
+    fill(0);  // Black fill color
+
+    // Draw the outer ellipse at the translated origin
     ellipse(0, 0, w, h);
 
+    // Remove the stroke for the inner ellipse
     noStroke();
+
+    // Set the fill color to white for the inner ellipse
     fill(255);
+
+    // Draw a smaller inner ellipse inside the outer one, with a third of its width and height
     ellipse(0, 0, w / 3, h / 3);
 
+    // Restore the previous drawing state to remove transformations for the next iteration
     pop();
   }
 }
@@ -130,7 +432,6 @@ function calculateAngle(x1, y1, x2, y2) {
   return angleRadians * (180 / Math.PI);
 }
 
-
 function createEllipse(xPos, yPos, radiusX, radiusY) {
   fill(random(255), random(255), random(255));
   stroke('orange');
@@ -138,110 +439,3 @@ function createEllipse(xPos, yPos, radiusX, radiusY) {
   ellipse(xPos, yPos, radiusX * 2, radiusY * 2);
 }
 
-// class for circles
-class ConcentricCircles {
-  constructor(x, y, outerDiameter, innerDiameter, numCircles, dotColor, fillColor) {
-    this.x = x;
-    this.y = y;
-    this.outerDiameter = outerDiameter;
-    this.innerDiameter = innerDiameter;
-    this.numCircles = numCircles;
-    this.dotColor = dotColor;
-    this.fillColor = fillColor;
-    this.diameterStep = (outerDiameter - innerDiameter) / (numCircles - 1);
-  }
-
-  draw() {
-    // Disegna il cerchio centrale con riempimento
-    noStroke();
-    fill(this.fillColor);
-    circle(this.x, this.y, 140);
-    
-    // Disegna i cerchi concentrici
-    for (let i = 0; i < this.numCircles; i++) {
-      let currentDiameter = this.outerDiameter - i * this.diameterStep;
-      this.drawDashedCircle(this.x, this.y, currentDiameter, 6, this.dotColor, 2); 
-    }
-  }
-
-  drawDashedCircle(x, y, diameter, dotSize, lineColor, spacing) {
-    stroke(lineColor);
-    noFill();
-
-    let radius = diameter / 2;
-    let circumference = TWO_PI * radius;
-    let numDots = floor(circumference / (dotSize + spacing));
-
-    for (let i = 0; i < numDots; i++) {
-      let angle = map(i, 0, numDots, 0, TWO_PI);
-      let xDot = x + radius * cos(angle);
-      let yDot = y + radius * sin(angle);
-
-      fill(lineColor);
-      noStroke();
-      circle(xDot, yDot, dotSize);
-    }
-  }
-}
-
-
-
-class RadialLinesCircle {
-  constructor(x, y, outerRadius, numLines, color, innerRadius) {
-    this.x = x;
-    this.y = y;
-    this.outerRadius = outerRadius;
-    this.numLines = numLines;
-    this.color = color;
-    this.innerRadius = innerRadius; // Radius of the vacated area in the centre
-  }
-
-  draw() {
-    // Drawing an external circle
-    fill(this.color);
-    noStroke();
-    ellipse(this.x, this.y, this.outerRadius * 2);
-    
-      // Calculate the angle increment for each point
-    let angleStep = TWO_PI / this.numLines;
-    
-     // Store all outer and inner points
-    let outerPoints = [];
-    let innerPoints = [];
-    
-    
-    // Drawing Radial Lines
-    stroke('#ec5800'); // line colour
-    strokeWeight(3);
-    for (let i = 0; i < this.numLines; i++) {
-      let angle1 = map(i, 0, this.numLines, 0, TWO_PI);
-      let x1 = this.x + cos(angle1) * this.outerRadius;
-      let y1 = this.y + sin(angle1) * this.outerRadius;
-      line(this.x, this.y, x1, y1);
-      
-        let angle2 = i * angleStep;
-      let xOuter = this.x + cos(angle2) * this.outerRadius;
-      let yOuter = this.y + sin(angle2) * this.outerRadius;
-      let xInner = this.x + cos(angle2) * this.innerRadius;
-      let yInner = this.y + sin(angle2) * this.innerRadius;
-      
-      outerPoints.push({x: xOuter, y: yOuter});
-      innerPoints.push({x: xInner, y: yInner});
-    }
-    
-     // Drawing Radial Zigzag Lines
-    stroke('#ec5800');
-    strokeWeight(3);
-    for (let i = 0; i < this.numLines; i++) {
-      let nextIndex = (i + 1) % this.numLines;  // Guaranteed Loop Connection
-
-      // Connect the current outer point to the next inner point.
-      line(outerPoints[i].x, outerPoints[i].y, innerPoints[nextIndex].x, innerPoints[nextIndex].y);
-    }
-
-    // Draw a blank area in the centre
-    fill(6, 110, 153); // background colour
-    noStroke();
-    ellipse(this.x, this.y, this.innerRadius * 2); // Empty area in the centre
-  }
-}
