@@ -1,14 +1,14 @@
 
 let circles = []; 
 const points = [
-   [4, 136], [95, 157], [137, 96], [136, 4], [97, 243], [242, 118],
+    [4, 136], [95, 157], [137, 96], [136, 4], [97, 243], [242, 118],
     [264, 202], [305, 55], [356, 224], [201, 264], [53, 305], [75, 396],
     [0, 296], [162, 419], [183, 500], [224, 356], [316, 377], [336, 463],
     [422, 484], [489, 423], [540, 440], [462, 337], [376, 316], [500, 300],
     [418, 162], [396, 76], [458, 12], [500, 21], [296, 0], [500, 182],
     [0, 28], [25, -10], [6, 458], [40, 540], [300, 500]
   ];
-  let isRotating = false; // Global variable that controls the rotation state of all DotCircle.
+  
 
 // Class for circles with dot
 class DotCircle {
@@ -22,9 +22,10 @@ class DotCircle {
     this.fillColor = fillColor; 
     this.diameterStep = (outerDiameter - innerDiameter) / (numCircles - 1);
     this.angle = 0; // Initial angle
+    let isRotating = false; // Control of rotational state
   }
   display() {
-    if (isRotating) {
+    if (this.isRotating) {
       this.angle += 0.02; // If the rotation state is true, the angle is increased
     }
 
@@ -72,10 +73,26 @@ class DotCircle {
       circle(xDot, yDot, dotSize); // Draw the dot at calculated position
     }
   }
+
+// Toggle the rotation state
+toggleRotation() {
+  this.isRotating = !this.isRotating;
+}
+
+// Check if the mouse is over this DotCircle
+isMouseOver(px, py) {
+  const distance = dist(px, py, this.x, this.y);
+  return distance < this.outerDiameter / 2;
+}
 }
 // Detect mouse press and toggle rotation of all DotCircles
 function mousePressed() {
-  isRotating = !isRotating; // Toggle global rotation state
+  for (let circle of circles) {
+    if (circle instanceof DotCircle && circle.isMouseOver(mouseX, mouseY)) {
+      circle.toggleRotation(); // Toggles the rotation state of the clicked DotCircle.
+      break; // Switch only one
+    }
+  }
 }
 // Class for circles with multiple line
 class LineCircle {
@@ -340,10 +357,6 @@ function draw() {
   drawPinkArc([290, 290], [376, 316]);
   drawPinkArc([440, 250], [500, 182]);
   drawPinkArc([100, 480], [183, 500]);
-  
- 
-  
-  
   
 }
 
