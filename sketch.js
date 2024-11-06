@@ -24,6 +24,7 @@ class DotCircle {
     this.angle = 0; // Initial angle
     let isRotating = false; // Control of rotational state
   }
+
   display() {
     if (this.isRotating) {
       this.angle += 0.02; // If the rotation state is true, the angle is increased
@@ -42,8 +43,16 @@ class DotCircle {
     for (let i = 0; i < this.numCircles; i++) {
       // Calculate the current diameter based on the step size
       let currentDiameter = (this.outerDiameter - 4) - i * this.diameterStep;
+
+     // Change colour based on rotation angle
+      let gradientColor = lerpColor(
+        color(this.dotColor), 
+        color(255), // White as target colour for gradient
+        (sin(this.angle + i * 0.3) + 1) / 2 // Using the sine function to generate dynamic gradients
+      );
+
       // Call the function to draw a dashed circle at this diameter
-      this.drawDashedCircle(0, 0, currentDiameter, 6, this.dotColor, 2); 
+      this.drawDashedCircle(0, 0, currentDiameter, 6, gradientColor, 2); 
     }
     pop();
   }
