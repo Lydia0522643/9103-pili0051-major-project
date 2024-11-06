@@ -1,43 +1,50 @@
 
 let circles = []; 
 const points = [
-    [4, 136], [95, 157], [137, 96], [136, 4], [97, 243], [242, 118],
+   [4, 136], [95, 157], [137, 96], [136, 4], [97, 243], [242, 118],
     [264, 202], [305, 55], [356, 224], [201, 264], [53, 305], [75, 396],
     [0, 296], [162, 419], [183, 500], [224, 356], [316, 377], [336, 463],
     [422, 484], [489, 423], [540, 440], [462, 337], [376, 316], [500, 300],
     [418, 162], [396, 76], [458, 12], [500, 21], [296, 0], [500, 182],
     [0, 28], [25, -10], [6, 458], [40, 540], [300, 500]
   ];
+  let isRotating = false; // Global variable that controls the rotation state of all DotCircle.
 
 // Class for circles with dot
 class DotCircle {
   constructor(x, y, outerDiameter, innerDiameter, numCircles, dotColor, fillColor) {
-    this.x = x; // X-coordinate for the center of the circle
-    this.y = y; // Y-coordinate for the center of the circle
-    this.outerDiameter = outerDiameter; // Diameter of the outermost circle
-    this.innerDiameter = innerDiameter; // Diameter of the innermost circle
-    this.numCircles = numCircles; // Number of concentric circles
-    this.dotColor = dotColor; // Color for the dots on each circle
-    this.fillColor = fillColor; // Fill color for the main circle
-
-    // Calculate the step size to scale down each circle diameter
+    this.x = x; 
+    this.y = y; 
+    this.outerDiameter = outerDiameter; 
+    this.innerDiameter = innerDiameter; 
+    this.numCircles = numCircles; 
+    this.dotColor = dotColor; 
+    this.fillColor = fillColor; 
     this.diameterStep = (outerDiameter - innerDiameter) / (numCircles - 1);
-    
+    this.angle = 0; // Initial angle
   }
-
   display() {
+    if (isRotating) {
+      this.angle += 0.02; // If the rotation state is true, the angle is increased
+    }
+
+    push();
+    translate(this.x, this.y);
+    rotate(this.angle);
+
     // Draw the filled main circle in the background
     noStroke(); // No border for the filled circle
     fill(this.fillColor); // Set fill color for the main circle
-    circle(this.x, this.y, this.outerDiameter); // Draw the main circle with full diameter
+    circle(0, 0, this.outerDiameter); // Draw the main circle with full diameter
 
     // Draw each concentric circle with dashed style
     for (let i = 0; i < this.numCircles; i++) {
       // Calculate the current diameter based on the step size
       let currentDiameter = (this.outerDiameter - 4) - i * this.diameterStep;
       // Call the function to draw a dashed circle at this diameter
-      this.drawDashedCircle(this.x, this.y, currentDiameter, 6, this.dotColor, 2); 
+      this.drawDashedCircle(0, 0, currentDiameter, 6, this.dotColor, 2); 
     }
+    pop();
   }
 
   drawDashedCircle(x, y, diameter, dotSize, lineColor, spacing) {
@@ -65,6 +72,10 @@ class DotCircle {
       circle(xDot, yDot, dotSize); // Draw the dot at calculated position
     }
   }
+}
+// Detect mouse press and toggle rotation of all DotCircles
+function mousePressed() {
+  isRotating = !isRotating; // Toggle global rotation state
 }
 // Class for circles with multiple line
 class LineCircle {
