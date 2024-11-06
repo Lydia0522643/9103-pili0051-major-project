@@ -9,126 +9,7 @@ const points = [
     [0, 28], [25, -10], [6, 458], [40, 540], [300, 500]
   ];
 
-function setup() {
-  createCanvas(500, 500);
-  
-
-  // cirles
-  //1
-  circles.push(new DotCircle(65, 70, 140, 75, 5, '#272b5f', '#bfe0f0'));
-  circles.push(new LineCircle(65, 70, 40, 4, 3, '#984e90', '#006c31'));
-  circles.push(new SmallCircle(65, 70, 3, '#040506', '#05844d', '#b1a4b4'));
-       
-  
-  //2
-  circles.push(new DotCircle(175, 180, 140, 75, 5, '#159439', '#e3f2ef'));
-  circles.push(new LineCircle(175, 180, 40, 4, 3, '#eb5559', '#c74d97'));
-  circles.push(new SmallCircle(175, 180, 3, '#040506', '#05844d', '#b1a4b4'));
-  
-  //3
-  circles.push(new DotCircle(290, 290, 140, 75, 5, '#dd3d4f', '#fff6fa'));
-  circles.push(new ZigzagCircle(290, 290, 40, 20, 30, '#d260a0', '#eb5a4b'));
-  circles.push(new SmallCircle(290, 290, 3, '#040506', '#05844d', '#b1a4b4'));
-  
-  //4
-  circles.push(new DotCircle(400, 400, 135, 75, 5, '#15438a', '#F4C54C'));
-  circles.push(new LineCircle(400, 400, 40, 4, 3, '#eb584e', '#e97fb1'));
-  circles.push(new SmallCircle(400, 400, 3, '#040506', '#e5282c', '#b1a4b4'));
-  
-  
-  //5
-  circles.push(new DotCircle(510, 510, 135, 75, 5, '#6eba78', '#ecf6f8'));
-  circles.push(new LineCircle(510, 510, 40, 4, 3, '#bcc25d', '#c980b5'));
-      
-  
-  //6
-  circles.push(new ZigzagCircle(215, 30, 135/2, 35, 30, '#f8ca2a', '#e4271a'));
-  circles.push(new DotCircle(215, 30, 80, 40, 3, '#eb5a30', '#c4549b'));
-  circles.push(new SmallCircle(215, 30, 3, '#040506', '#05844d', '#b1a4b4'));
-  
-  //7
-  circles.push(new DotCircle(330, 140, 140, 75, 5, '#c093c3', '#fab632'));
-  circles.push(new LineCircle(330, 140, 40, 4, 3, '#53bad7', '#ba60a1'));
-  circles.push(new SmallCircle(330, 140, 3, '#26869c', '#e21e19', '#AB9FAE'));
-  
-  //8
-  circles.push(new DotCircle(440, 250, 140, 75, 5, '#f07e35', '#f2f8f6'));
-  circles.push(new LineCircle(440, 250, 40, 4, 3, '#bc569c', '#117253'));
-  circles.push(new SmallCircle(440, 250, 3, '#040506', '#05844d', '#b1a4b4'));
-  
-  //9
-  circles.push(new ZigzagCircle(550, 360, 135/2, 35, 30, '#f8ca2a', '#e4271a'));
-  
-  //10
-  circles.push(new DotCircle(370, -10, 140, 75, 5, '#e4271e', '#fceae6'));
-  circles.push(new LineCircle(370, -10, 40, 4, 3, '#e2a988', '##ba60a1'));
-  circles.push(new SmallCircle(370, -10, 3, '#040506', '#05844d', '#b1a4b4'));
-  
-  //11
-  circles.push(new DotCircle(480, 100, 140, 75, 5, '#22315b', '#f6af4f'));
-  circles.push(new DotCircle(480, 100, 80, 40, 3, '#f4e1f0', '#bd4591'));
-  circles.push(new SmallCircle(480, 100, 3, '#040506', '#e6332a', '#b1a4b4'));
-     
-  //12
-  circles.push(new DotCircle(20, 220, 140, 75, 5, '#004985', '#f5b423'));
-  circles.push(new DotCircle(20, 220, 80, 40, 3, '#e83e35', '#c44b96'));
-  circles.push(new SmallCircle(20, 220, 3, '#040506', '#e5282c', '#b1a4b4'));
-  
-  //13
-  circles.push(new ZigzagCircle(140, 330,135/2, 35, 30, '#f8ca2a', '#e4271a'));
-  circles.push(new DotCircle(140, 330, 80, 40, 3, '#e52a2f', '#c85d9f'));
-  circles.push(new SmallCircle(140, 330, 3, '#040506', '#e5282c', '#b1a4b4'));
-  
-  //14
-  circles.push(new DotCircle(250, 440, 140, 75, 5, '#cd1a52', '#f8b66a'));
-  circles.push(new LineCircle(250, 440, 40, 4, 3,  '#bcc25d', '#c980b5'));
-  circles.push(new SmallCircle(250, 440, 3, '#040506', '#e5282c', '#b1a4b4'));
-  
-  //15
-  circles.push(new DotCircle(365, 550, 140, 75, 5, '#e72b2c', '#fdf6f7'));
-  
-  //16
-  circles.push(new DotCircle(-10, 370, 140, 75, 5, '#009d90', '#daeef3'));
-  circles.push(new LineCircle(-10, 370, 40, 4, 3,  '#6e9381', '#af4d97'));
-  circles.push(new SmallCircle(-10, 370, 3, '#040506', '#05844d', '#b1a4b4'));
-      
-  //17
-  circles.push(new DotCircle(100, 480, 140, 75, 5, '#e52929', '#fdfdfd'));
-  circles.push(new LineCircle(100, 480, 40, 4, 3,  '#b275b0', '#69c0e3'));
-  circles.push(new SmallCircle(100, 480, 3, '#040506', '#05844d', '#b1a4b4'));
-  
-  // Define the start and end colors of the gradient
-  let topColor = color('#004e76');  // Blue 
-  let bottomColor = color('#0d7faa');  // Light blue shade
-  
-   // Draw the gradient background
-  for (let y = 0; y <= height; y++) {
-    // Interpolate between the top and bottom color
-    let inter = map(y, 0, height, 0, 1);
-    let c = lerpColor(topColor, bottomColor, inter);
-    
-    // Draw a horizontal line with the interpolated color
-    stroke(c);
-    line(0, y, width, y);
-  }
-  
-  
- // Loop through the array and call display() on each circle object
-  for (let i = 0; i < circles.length; i++) {
-    circles[i].display();
-  }
-  
-//structure
-
-  // connect point
-  connectPoints(points, 108);
-  
-  // random ellipses
-  generateRandomEllipses(points);
-
-}
-
-
+// Class for circles with dot
 class DotCircle {
   constructor(x, y, outerDiameter, innerDiameter, numCircles, dotColor, fillColor) {
     this.x = x; // X-coordinate for the center of the circle
@@ -185,7 +66,6 @@ class DotCircle {
     }
   }
 }
-
 // Class for circles with multiple line
 class LineCircle {
   constructor(x, y, baseRadius, numConcentricCircles, strokeSize, backColor, stokeColor) {
@@ -229,7 +109,6 @@ class LineCircle {
     }
   }
 }
-
 // Class for circles with zigzag line
 class ZigzagCircle {
   constructor(x, y, outerRadius, innerRadius, numLines, fillColor, strokeColor) {
@@ -297,7 +176,6 @@ class ZigzagCircle {
 
   }
 }
-
 // Class for smal circles
 class SmallCircle {
   constructor(x, y, strokeWeightValue, strokeColor, fillColor, smallCircleColor) {
@@ -324,6 +202,181 @@ class SmallCircle {
   }
 }
 
+
+// Dictionary with arrays for circle parameters
+let circleParams = {
+  1: [
+    ['DotCircle', 65, 70, 140, 75, 5, '#272b5f', '#bfe0f0'],
+    ['LineCircle', 65, 70, 40, 4, 3, '#984e90', '#006c31'],
+    ['SmallCircle', 65, 70, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  2: [
+    ['DotCircle', 175, 180, 140, 75, 5, '#159439', '#e3f2ef'],
+    ['LineCircle', 175, 180, 40, 4, 3, '#eb5559', '#c74d97'],
+    ['SmallCircle', 175, 180, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  3: [
+    ['DotCircle', 290, 290, 140, 75, 5, '#dd3d4f', '#fff6fa'],
+    ['ZigzagCircle', 290, 290, 40, 20, 30, '#d260a0', '#eb5a4b'],
+    ['SmallCircle', 290, 290, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  4: [
+    ['DotCircle', 400, 400, 135, 75, 5, '#15438a', '#F4C54C'],
+    ['LineCircle', 400, 400, 40, 4, 3, '#eb584e', '#e97fb1'],
+    ['SmallCircle', 400, 400, 3, '#040506', '#e5282c', '#b1a4b4']
+  ],
+  5: [
+    ['DotCircle', 510, 510, 135, 75, 5, '#6eba78', '#ecf6f8'],
+    ['LineCircle', 510, 510, 40, 4, 3, '#bcc25d', '#c980b5']
+  ],
+  6: [
+    ['ZigzagCircle', 215, 30, 135/2, 35, 30, '#f8ca2a', '#e4271a'],
+    ['DotCircle', 215, 30, 80, 40, 3, '#eb5a30', '#c4549b'],
+    ['SmallCircle', 215, 30, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  7: [
+    ['DotCircle', 330, 140, 140, 75, 5, '#c093c3', '#fab632'],
+    ['LineCircle', 330, 140, 40, 4, 3, '#53bad7', '#ba60a1'],
+    ['SmallCircle', 330, 140, 3, '#26869c', '#e21e19', '#AB9FAE']
+  ],
+  8: [
+    ['DotCircle', 440, 250, 140, 75, 5, '#f07e35', '#f2f8f6'],
+    ['LineCircle', 440, 250, 40, 4, 3, '#bc569c', '#117253'],
+    ['SmallCircle', 440, 250, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  9: [
+    ['ZigzagCircle', 550, 360, 135/2, 35, 30, '#f8ca2a', '#e4271a']
+  ],
+  10: [
+    ['DotCircle', 370, -10, 140, 75, 5, '#e4271e', '#fceae6'],
+    ['LineCircle', 370, -10, 40, 4, 3, '#e2a988', '#ba60a1'],
+    ['SmallCircle', 370, -10, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  11: [
+    ['DotCircle', 480, 100, 140, 75, 5, '#22315b', '#f6af4f'],
+    ['DotCircle', 480, 100, 80, 40, 3, '#f4e1f0', '#bd4591'],
+    ['SmallCircle', 480, 100, 3, '#040506', '#e6332a', '#b1a4b4']
+  ],
+  12: [
+    ['DotCircle', 20, 220, 140, 75, 5, '#004985', '#f5b423'],
+    ['DotCircle', 20, 220, 80, 40, 3, '#e83e35', '#c44b96'],
+    ['SmallCircle', 20, 220, 3, '#040506', '#e5282c', '#b1a4b4']
+  ],
+  13: [
+    ['ZigzagCircle', 140, 330, 135/2, 35, 30, '#f8ca2a', '#e4271a'],
+    ['DotCircle', 140, 330, 80, 40, 3, '#e52a2f', '#c85d9f'],
+    ['SmallCircle', 140, 330, 3, '#040506', '#e5282c', '#b1a4b4']
+  ],
+  14: [
+    ['DotCircle', 250, 440, 140, 75, 5, '#cd1a52', '#f8b66a'],
+    ['LineCircle', 250, 440, 40, 4, 3, '#bcc25d', '#c980b5'],
+    ['SmallCircle', 250, 440, 3, '#040506', '#e5282c', '#b1a4b4']
+  ],
+  15: [
+    ['DotCircle', 365, 550, 140, 75, 5, '#e72b2c', '#fdf6f7']
+  ],
+  16: [
+    ['DotCircle', -10, 370, 140, 75, 5, '#009d90', '#daeef3'],
+    ['LineCircle', -10, 370, 40, 4, 3, '#6e9381', '#af4d97'],
+    ['SmallCircle', -10, 370, 3, '#040506', '#05844d', '#b1a4b4']
+  ],
+  17: [
+    ['DotCircle', 100, 480, 140, 75, 5, '#e52929', '#fdfdfd'],
+    ['LineCircle', 100, 480, 40, 4, 3, '#b275b0', '#69c0e3'],
+    ['SmallCircle', 100, 480, 3, '#040506', '#05844d', '#b1a4b4']
+  ]
+};
+const circleClasses = {
+  DotCircle: DotCircle,
+  LineCircle: LineCircle,
+  ZigzagCircle: ZigzagCircle,
+  SmallCircle: SmallCircle
+};
+
+
+function setup() {
+  // Create a 500x500 pixel canvas for the drawing
+  createCanvas(500, 500);
+  
+  // Draw a gradient background on the canvas
+  drawGradient();
+  
+  // Create circle instances based on the parameters and class mappings
+  // The 'circleParams' object contains configurations for different circle types
+  // The 'circleClasses' object maps circle types to their respective class constructors
+  createCircles(circleParams, circleClasses);
+  
+  // Structure to hold points for connecting and generating shapes
+  // connectPoints will draw lines or shapes between specified points
+  connectPoints(points, 108);
+  
+  // Generate and draw random ellipses at the specified points
+  // The 'generateRandomEllipses' function adds visual interest by placing
+  // randomly sized and colored ellipses around the points
+  generateRandomEllipses(points);
+}
+
+function draw() {
+  
+  // Loop through the array and call display() on each circle object
+  for (let i = 0; i < circles.length; i++) {
+    circles[i].display();
+  }
+  
+  // Draw specific pink arcs between the given points
+  drawPinkArc([70, 70], [95, 157]);
+  drawPinkArc([180, 180], [242, 118]);
+  drawPinkArc([290, 290], [376, 316]);
+  drawPinkArc([440, 250], [500, 182]);
+  drawPinkArc([100, 480], [183, 500]);
+  
+ 
+  
+  
+  
+}
+
+// Function to create circle instances based on given parameters and class mappings
+function createCircles(params, classes) {
+  // Iterate through each key in the params object to access different circle parameter sets
+  for (let key in params) {
+    // Get the array of parameter sets for the current key
+    let paramSetArray = params[key];
+    
+    // Loop through each parameter set in the array
+    for (let i = 0; i < paramSetArray.length; i++) {
+      // Extract the current parameter set
+      const paramSet = paramSetArray[i];
+      
+      // The first element of the parameter set specifies the type of circle to create
+      const type = paramSet[0];
+      
+      // Check if the circle class exists for the given type and create an instance
+      // The remaining elements in paramSet are passed as arguments to the class constructor
+      let instance = classes[type] ? new classes[type](...paramSet.slice(1)) : null;
+      
+      // If the instance was created successfully, add it to the circles array
+      if (instance) {
+        circles.push(instance);
+      }
+    }
+  }
+}
+
+// function for background
+function drawGradient() {
+  // Define the start and end colors of the gradient
+  let topColor = color('#004e76');  // Blue 
+  let bottomColor = color('#0d7faa');  // Light blue shade
+
+  // Draw the gradient background
+  for (let y = 0; y <= height; y++) {
+    let inter = map(y, 0, height, 0, 1);
+    let c = lerpColor(topColor, bottomColor, inter);
+    stroke(c);
+    line(0, y, width, y);
+  }
+}
 // function for structure
 function connectPoints(points, maxDistance) {
   // Loop through each point in the array 'points' and treat it as the starting point
@@ -439,3 +492,20 @@ function createEllipse(xPos, yPos, radiusX, radiusY) {
   ellipse(xPos, yPos, radiusX * 2, radiusY * 2);
 }
 
+// Function to draw pink arcs between two points
+function drawPinkArc(start, end) {
+  const midX = (start[0] + end[0]) / 2;
+  const midY = (start[1] + end[1]) / 2;
+  const distance = calculateDistance(...start, ...end);
+
+  stroke(255, 28, 90); // Pink color
+  strokeWeight(6);
+  noFill();
+
+  push();
+  translate(midX, midY);
+  const angle = calculateAngle(...start, ...end);
+  rotate(radians(angle));
+  arc(0, 0, distance, distance, PI, TWO_PI);
+  pop();
+}
