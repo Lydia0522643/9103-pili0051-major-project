@@ -12,6 +12,7 @@
   - Add the *function mousePressed()*, detect each DotCircle in the array, and detect the click area to switch the rotation state.
 ##
 - **References to inspiration for animation**
+####
 ![A gif](References/References(1).gif)
 #### 
   - This GIF got me thinking that I could make the DotCircle rotate around the common centre of the concentric circles based on the group code.
