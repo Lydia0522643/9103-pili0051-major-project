@@ -44,7 +44,7 @@ class DotCircle {
       // Calculate the current diameter based on the step size
       let currentDiameter = (this.outerDiameter - 4) - i * this.diameterStep;
 
-     // Change colour based on rotation angle
+     // Change colour based on rotation angle. Link: https://p5js.org/reference/p5/lerpColor/
       let gradientColor = lerpColor(
         color(this.dotColor), 
         color(255), // White as target colour for gradient
